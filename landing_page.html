@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamline CRM - Manage leads. Close deals. Stay winning.</title>
+    <meta name="description"
+        content="Streamline CRM keeps your sales organized while you stay focused on the bag. Start free today - no credit card required.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #1e3a8a;
+            --accent-color: #10b981;
+            --accent-secondary: #8b5cf6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+            --section-padding: 5rem 1rem;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--font-family);
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--section-padding);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e2e8f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dashboard-interface {
+            width: 100%;
+            height: 100%;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header {
+            background: white;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .nav-icon.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .nav-icon:not(.active) {
+            background: #f1f5f9;
+        }
+
+        .dashboard-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dashboard-title h4 {
+            margin: 0;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+        }
+
+        .add-deal-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-deal-btn:hover {
+            background: #059669;
+        }
+
+        .pipeline-columns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .pipeline-column {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .column-header {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+        }
+
+        .column-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .column-count {
+            background: #e2e8f0;
+            color: var(--text-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .column-content {
+            padding: 0.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            overflow-y: auto;
+        }
+
+        .deal-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .deal-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .deal-card.closed {
+            border-color: var(--accent-color);
+            background: #f0fdf4;
+        }
+
+        .deal-header {
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .deal-company {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .deal-value {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-email {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .deal-notes {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Responsive Dashboard */
+        @media (max-width: 768px) {
+            .dashboard-mockup {
+                max-width: 100%;
+                height: 300px;
+            }
+
+            .pipeline-columns {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+
+            .dashboard-header {
+                padding: 0.75rem;
+            }
+
+            .dashboard-title h4 {
+                font-size: 1rem;
+            }
+
+            .add-deal-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .deal-card {
+                padding: 0.5rem;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            :root {
+                --section-padding: 3rem 1rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Education Section */
+        .education {
+            padding: var(--section-padding);
+            background: var(--bg-secondary);
+        }
+
+        .education-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .education-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .education-intro {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: var(--transition);
+        }
+
+        .benefit-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.1);
+            background: var(--primary-color);
+        }
+
+        .benefit-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .benefit-text p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .education-summary {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Pipeline Demo */
+        .pipeline-demo {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .pipeline-demo h4 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .pipeline-stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pipeline-stage {
+            text-align: center;
+        }
+
+        .stage-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-deals {
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .deal-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 0.75rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: dealMove 4s ease-in-out infinite;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .deal-card.closed {
+            background: #dcfce7;
+            border-color: var(--accent-color);
+        }
+
+        .deal-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .deal-value {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .pipeline-arrow {
+            margin-top: 1rem;
+        }
+
+        .pipeline-flow {
+            stroke-dasharray: 10;
+            animation: flowAnimation 3s linear infinite;
+        }
+
+        @keyframes flowAnimation {
+            0% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: 20;
+            }
+        }
+
+        @keyframes dealMove {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            25% {
+                transform: translateY(-5px);
+            }
+
+            50% {
+                transform: translateY(0);
+            }
+
+            75% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Responsive Education Section */
+        @media (max-width: 768px) {
+            .education-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pipeline-stages {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .pipeline-demo {
+                padding: 1.5rem;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.75rem;
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--section-padding);
+            background: var(--bg-primary);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .features-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .features-header p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-preview {
+            margin-bottom: 1.5rem;
+            height: 120px;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Pipeline Mockup */
+        .pipeline-mockup {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .pipeline-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        .pipeline-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-deal-card {
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-bottom: 0.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .mini-deal-card.won {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .feature-card:hover .mini-deal-card {
+            transform: translateY(-2px);
+        }
+
+        /* Tracking Mockup */
+        .tracking-mockup {
+            width: 100%;
+        }
+
+        .deal-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.25rem;
+            font-size: 0.75rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .deal-company {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .deal-stage {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .deal-amount {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Contact Mockup */
+        .contact-mockup {
+            width: 100%;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .contact-company {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-tasks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .contact-tasks .task-item {
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Tasks Mockup */
+        .tasks-mockup {
+            width: 100%;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .task-list .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .task-list .task-item.completed {
+            opacity: 0.7;
+        }
+
+        .task-list .task-item.completed .task-text {
+            text-decoration: line-through;
+        }
+
+        .task-list .task-item.urgent {
+            border-left: 3px solid #ef4444;
+        }
+
+        .task-check {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .task-text {
+            flex: 1;
+        }
+
+        .feature-card:hover .task-list .task-item {
+            transform: translateX(5px);
+        }
+
+        /* Feature Content */
+        .feature-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-content p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .feature-use-case {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-style: italic;
+            display: block;
+        }
+
+        /* Responsive Features */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .features-header {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pipeline-mockup {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .pipeline-column {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .pipeline-header {
+                margin-bottom: 0;
+                min-width: 60px;
+            }
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: var(--section-padding);
+            background: var(--bg-secondary);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-header p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .free-plan .plan-badge {
+            background: var(--primary-color);
+        }
+
+        .enterprise-plan .plan-badge {
+            background: var(--accent-secondary);
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .period {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+
+        .plan-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .plan-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .feature-item.included .feature-icon {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .feature-item.locked {
+            opacity: 0.5;
+        }
+
+        .feature-item.locked .feature-icon {
+            background: #e5e7eb;
+            color: #9ca3af;
+        }
+
+        .plan-cta {
+            text-align: center;
+        }
+
+        .trial-note {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+
+        .pricing-footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .pricing-note {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-guarantees {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .guarantee-icon {
+            font-size: 1rem;
+        }
+
+        /* Responsive Pricing */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-guarantees {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pricing-header {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .plan-badge {
+                font-size: 0.75rem;
+                padding: 0.375rem 1rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright p {
+            color: #cbd5e1;
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .footer-attribution {
+            text-align: right;
+        }
+
+        .footer-attribution p {
+            color: #cbd5e1;
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .footer-attribution strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-attribution {
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .footer-section:nth-child(4),
+            .footer-section:nth-child(5) {
+                grid-column: 2 / 4;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">Streamline CRM</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#signup" class="btn btn-primary">Start Free</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="fade-in">Manage leads. Close deals. Stay winning.</h1>
+                    <p class="fade-in fade-in-delay-1">Streamline CRM keeps your sales organized while you stay focused
+                        on the bag.</p>
+                    <div class="hero-ctas fade-in fade-in-delay-2">
+                        <a href="#signup" class="btn btn-primary btn-large">Start Free</a>
+                        <a href="#demo" class="btn btn-secondary btn-large">Watch Demo</a>
+                    </div>
+                    <div class="trust-badges fade-in fade-in-delay-3">
+                        <div class="trust-badge">
+                            <span>✓</span>
+                            <span>No credit card required</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span>✓</span>
+                            <span>Cancel anytime</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in fade-in-delay-2">
+                    <div class="dashboard-mockup">
+                        <div class="dashboard-interface">
+                            <!-- Dashboard Header -->
+                            <div class="dashboard-header">
+                                <div class="dashboard-nav">
+                                    <div class="nav-icon active">📊</div>
+                                    <div class="nav-icon">💰</div>
+                                    <div class="nav-icon">👥</div>
+                                    <div class="nav-icon">📋</div>
+                                </div>
+                                <div class="dashboard-title">
+                                    <h4>Deal Pipeline</h4>
+                                    <button class="add-deal-btn">+ Add Deal</button>
+                                </div>
+                            </div>
+
+                            <!-- Pipeline Columns -->
+                            <div class="pipeline-columns">
+                                <div class="pipeline-column">
+                                    <div class="column-header">
+                                        <span class="column-title">Lead</span>
+                                        <span class="column-count">0</span>
+                                    </div>
+                                    <div class="column-content">
+                                        <!-- Empty for now -->
+                                    </div>
+                                </div>
+
+                                <div class="pipeline-column">
+                                    <div class="column-header">
+                                        <span class="column-title">Contacted</span>
+                                        <span class="column-count">2</span>
+                                    </div>
+                                    <div class="column-content">
+                                        <div class="deal-card">
+                                            <div class="deal-header">
+                                                <div class="deal-name">shadow</div>
+                                                <div class="deal-company">test</div>
+                                            </div>
+                                            <div class="deal-value">$1,999</div>
+                                            <div class="deal-email">test@test.com</div>
+                                            <div class="deal-notes">"test notes"</div>
+                                        </div>
+                                        <div class="deal-card">
+                                            <div class="deal-header">
+                                                <div class="deal-name">shadow</div>
+                                                <div class="deal-company">test</div>
+                                            </div>
+                                            <div class="deal-value">$1,999</div>
+                                            <div class="deal-email">test@test.com</div>
+                                            <div class="deal-notes">"test notes"</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pipeline-column">
+                                    <div class="column-header">
+                                        <span class="column-title">In Progress</span>
+                                        <span class="column-count">0</span>
+                                    </div>
+                                    <div class="column-content">
+                                        <!-- Empty for now -->
+                                    </div>
+                                </div>
+
+                                <div class="pipeline-column">
+                                    <div class="column-header">
+                                        <span class="column-title">Closed</span>
+                                        <span class="column-count">1</span>
+                                    </div>
+                                    <div class="column-content">
+                                        <div class="deal-card closed">
+                                            <div class="deal-header">
+                                                <div class="deal-name">shadow</div>
+                                                <div class="deal-company">Acme Corp</div>
+                                            </div>
+                                            <div class="deal-value">$436,694</div>
+                                            <div class="deal-email">contact@acme.com</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="education-container">
+                <div class="education-content">
+                    <h2>What Even Is a CRM?</h2>
+                    <p class="education-intro">Think of it as your sales command center. No more sticky notes, forgotten
+                        follow-ups, or deals falling through the cracks.</p>
+
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Never lose a lead again</h4>
+                                <p>Every contact gets tracked automatically. No more "I thought you were following up
+                                    with them."</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Close deals faster</h4>
+                                <p>See exactly where each deal stands. Know who needs a nudge and when to follow up.</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Stay organized effortlessly</h4>
+                                <p>All your contacts, deals, and tasks in one place. Finally, a system that actually
+                                    works.</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Look like a pro</h4>
+                                <p>Impress clients with timely follow-ups and never miss important details about their
+                                    business.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="education-summary">No lost leads. No forgotten follow-ups. Just smooth pipelines and
+                        smoother sales.</p>
+                </div>
+
+                <div class="education-visual">
+                    <div class="pipeline-demo">
+                        <h4>Watch Your Deals Flow</h4>
+                        <div class="pipeline-stages">
+                            <div class="pipeline-stage">
+                                <div class="stage-header">Lead</div>
+                                <div class="stage-deals">
+                                    <div class="deal-card" id="deal1">
+                                        <div class="deal-name">Acme Corp</div>
+                                        <div class="deal-value">$5,000</div>
+                                    </div>
+                                    <div class="deal-card" id="deal2">
+                                        <div class="deal-name">Tech Startup</div>
+                                        <div class="deal-value">$12,000</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pipeline-stage">
+                                <div class="stage-header">Qualified</div>
+                                <div class="stage-deals">
+                                    <div class="deal-card" id="deal3">
+                                        <div class="deal-name">Big Enterprise</div>
+                                        <div class="deal-value">$25,000</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pipeline-stage">
+                                <div class="stage-header">Proposal</div>
+                                <div class="stage-deals">
+                                    <div class="deal-card" id="deal4">
+                                        <div class="deal-name">Local Business</div>
+                                        <div class="deal-value">$8,000</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pipeline-stage">
+                                <div class="stage-header">Closed</div>
+                                <div class="stage-deals">
+                                    <div class="deal-card closed" id="deal5">
+                                        <div class="deal-name">Success Co</div>
+                                        <div class="deal-value">$15,000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg width="100%" height="40" viewBox="0 0 400 40">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5"
+                                        orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent-color)" />
+                                    </marker>
+                                </defs>
+                                <path d="M 20 20 Q 200 20 380 20" stroke="var(--accent-color)" stroke-width="2"
+                                    fill="none" marker-end="url(#arrowhead)" class="pipeline-flow" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="features-header">
+                <h2>The sauce that makes deals happen</h2>
+                <p>Everything you need to turn prospects into profit. No fluff, just features that actually move the
+                    needle.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-feature="pipeline">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="feature-preview">
+                        <div class="pipeline-mockup">
+                            <div class="pipeline-column">
+                                <div class="pipeline-header">Leads</div>
+                                <div class="mini-deal-card">Acme Co</div>
+                                <div class="mini-deal-card">Tech Inc</div>
+                            </div>
+                            <div class="pipeline-column">
+                                <div class="pipeline-header">Qualified</div>
+                                <div class="mini-deal-card">Big Corp</div>
+                            </div>
+                            <div class="pipeline-column">
+                                <div class="pipeline-header">Closed</div>
+                                <div class="mini-deal-card won">Success!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Pipeline Dashboard</h3>
+                        <p>Drag, drop, and watch your deals flow through stages like magic.</p>
+                        <span class="feature-use-case">Perfect for: Visual people who need to see progress</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-feature="tracking">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="feature-preview">
+                        <div class="tracking-mockup">
+                            <div class="deal-row">
+                                <div class="deal-info">
+                                    <div class="deal-company">Acme Corp</div>
+                                    <div class="deal-stage">Proposal Sent</div>
+                                </div>
+                                <div class="deal-amount">$15,000</div>
+                            </div>
+                            <div class="deal-row">
+                                <div class="deal-info">
+                                    <div class="deal-company">Tech Startup</div>
+                                    <div class="deal-stage">Follow-up Due</div>
+                                </div>
+                                <div class="deal-amount">$8,500</div>
+                            </div>
+                            <div class="deal-row">
+                                <div class="deal-info">
+                                    <div class="deal-company">Big Enterprise</div>
+                                    <div class="deal-stage">Negotiation</div>
+                                </div>
+                                <div class="deal-amount">$45,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Lead + Deal Tracking</h3>
+                        <p>Never wonder "what's the status?" again. Everything tracked, nothing forgotten.</p>
+                        <span class="feature-use-case">Perfect for: Busy salespeople juggling multiple deals</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-feature="contacts">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="feature-preview">
+                        <div class="contact-mockup">
+                            <div class="contact-header">
+                                <div class="contact-avatar">JD</div>
+                                <div class="contact-info">
+                                    <div class="contact-name">John Doe</div>
+                                    <div class="contact-company">Acme Corp</div>
+                                </div>
+                            </div>
+                            <div class="contact-tasks">
+                                <div class="task-item">✓ Send proposal</div>
+                                <div class="task-item">📞 Follow-up call</div>
+                                <div class="task-item">📧 Contract review</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Contact Management</h3>
+                        <p>All the context you need. Know exactly where you left off with every contact.</p>
+                        <span class="feature-use-case">Perfect for: Relationship builders who care about details</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-feature="tasks">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="feature-preview">
+                        <div class="tasks-mockup">
+                            <div class="task-list">
+                                <div class="task-item completed">
+                                    <span class="task-check">✓</span>
+                                    <span class="task-text">Call Acme Corp</span>
+                                </div>
+                                <div class="task-item">
+                                    <span class="task-check">○</span>
+                                    <span class="task-text">Send proposal to Tech Inc</span>
+                                </div>
+                                <div class="task-item urgent">
+                                    <span class="task-check">!</span>
+                                    <span class="task-text">Follow up with Big Corp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Task Manager</h3>
+                        <p>Stay on top of your game. Automated reminders so nothing slips through the cracks.</p>
+                        <span class="feature-use-case">Perfect for: Organized pros who want to stay ahead</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <h2>Plans that flex with you</h2>
+                <p>Start free, scale when you're ready. No surprises, no gotchas.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card free-plan">
+                    <div class="plan-badge">Start here</div>
+                    <div class="plan-header">
+                        <h3>Free</h3>
+                        <div class="plan-price">
+                            <span class="price">$0</span>
+                            <span class="period">forever</span>
+                        </div>
+                        <p class="plan-description">100 combined leads, contacts & tasks</p>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Basic CRM features</span>
+                        </div>
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Standard support</span>
+                        </div>
+                        <div class="feature-item locked">
+                            <span class="feature-icon">✗</span>
+                            <span>Advanced reporting</span>
+                        </div>
+
+                        <div class="feature-item locked">
+                            <span class="feature-icon">✗</span>
+                            <span>Team collaboration</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-cta">
+                        <a href="#signup" class="btn btn-secondary btn-large">Start Free</a>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card pro-plan featured">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Pro</h3>
+                        <div class="plan-price">
+                            <span class="price">$19</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">10,000 combined leads, contacts & tasks</p>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Advanced CRM features</span>
+                        </div>
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-cta">
+                        <a href="#signup-pro" class="btn btn-primary btn-large">Start Pro Trial</a>
+                        <span class="trial-note">14-day free trial</span>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card enterprise-plan">
+                    <div class="plan-badge">Scale Up</div>
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="plan-price">
+                            <span class="price">Custom</span>
+                            <span class="period">pricing</span>
+                        </div>
+                        <p class="plan-description">Unlimited usage & API access</p>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>All Pro features</span>
+                        </div>
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Dedicated account manager</span>
+                        </div>
+                        <div class="feature-item included">
+                            <span class="feature-icon">✓</span>
+                            <span>Custom integrations</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-cta">
+                        <a href="#contact-sales" class="btn btn-secondary btn-large">Contact Sales</a>
+                        <span class="trial-note">Custom demo available</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-footer">
+                <p class="pricing-note">All plans include our core CRM features. Upgrade or downgrade anytime.</p>
+                <div class="pricing-guarantees">
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">🔒</span>
+                        <span>No setup fees</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">↩️</span>
+                        <span>Cancel anytime</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">💳</span>
+                        <span>No credit card for free plan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>Streamline CRM</h3>
+                        <p>Manage leads. Close deals. Stay winning.</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                        <li><a href="#api">API</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#press">Press</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#status">Status</a></li>
+                        <li><a href="mailto:support@streamlinecrm.com">support@streamlinecrm.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#security">Security</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Streamline CRM. All rights reserved.</p>
+                    <p class="footer-tagline">Made to help businesses grow</p>
+                </div>
+                <div class="footer-attribution">
+                    <p>Made by <strong>Mahmoud Sharif Ata</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Site Configuration
+        const siteConfig = {
+            branding: {
+                primaryColor: '#1e3a8a',
+                accentColor: '#10b981',
+                fontFamily: 'Inter, sans-serif'
+            },
+            content: {
+                hero: {
+                    headline: "Manage leads. Close deals. Stay winning.",
+                    subtext: "Streamline CRM keeps your sales organized while you stay focused on the bag.",
+                    ctaPrimary: "Start Free",
+                    ctaSecondary: "Watch Demo"
+                }
+            },
+            animations: {
+                duration: 300,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            }
+        };
+
+        // Animation States
+        const animationStates = {
+            hero: { loaded: false, animated: false },
+            features: { visible: false, cardsAnimated: [] },
+            pricing: { visible: false },
+            socialProof: { countersAnimated: false }
+        };
+
+        // Smooth scroll for navigation links
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle (basic implementation)
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinksContainer = document.querySelector('.nav-links');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    navLinksContainer.style.display = navLinksContainer.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+
+            // Initialize scroll-triggered animations
+            initScrollAnimations();
+
+            // Mark hero as loaded
+            animationStates.hero.loaded = true;
+            console.log('Streamline CRM Landing Page Loaded');
+        });
+
+        // Scroll-triggered animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('education')) {
+                            animateEducationSection();
+                        }
+                        if (entry.target.classList.contains('features')) {
+                            animateFeaturesSection();
+                        }
+                        if (entry.target.classList.contains('pricing')) {
+                            animatePricingSection();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections
+            const educationSection = document.querySelector('.education');
+            const featuresSection = document.querySelector('.features');
+
+            if (educationSection) {
+                observer.observe(educationSection);
+            }
+            if (featuresSection) {
+                observer.observe(featuresSection);
+            }
+
+            const pricingSection = document.querySelector('.pricing');
+            if (pricingSection) {
+                observer.observe(pricingSection);
+            }
+        }
+
+        // Animate education section
+        function animateEducationSection() {
+            const benefitItems = document.querySelectorAll('.benefit-item');
+
+            benefitItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('animate');
+                }, index * 200);
+            });
+
+            // Start pipeline animation
+            animatePipeline();
+        }
+
+        // Pipeline animation
+        function animatePipeline() {
+            const deals = document.querySelectorAll('.deal-card');
+
+            // Add subtle movement to deals
+            deals.forEach((deal, index) => {
+                setTimeout(() => {
+                    deal.style.animationDelay = `${index * 0.5}s`;
+                }, index * 100);
+            });
+
+            // Simulate deal movement every 6 seconds
+            setInterval(() => {
+                simulateDealMovement();
+            }, 6000);
+        }
+
+        // Simulate deal movement between stages
+        function simulateDealMovement() {
+            const stages = document.querySelectorAll('.stage-deals');
+
+            // Move a deal from Lead to Qualified
+            const leadDeals = stages[0].querySelectorAll('.deal-card');
+            if (leadDeals.length > 0) {
+                const dealToMove = leadDeals[0];
+                const clone = dealToMove.cloneNode(true);
+
+                // Add moving animation
+                dealToMove.style.transform = 'translateX(100px)';
+                dealToMove.style.opacity = '0';
+
+                setTimeout(() => {
+                    dealToMove.remove();
+                    stages[1].appendChild(clone);
+                    clone.style.transform = 'translateX(-100px)';
+                    clone.style.opacity = '0';
+
+                    setTimeout(() => {
+                        clone.style.transform = 'translateX(0)';
+                        clone.style.opacity = '1';
+                    }, 100);
+                }, 500);
+            }
+        }
+
+        // Animate features section
+        function animateFeaturesSection() {
+            if (animationStates.features.visible) return;
+            animationStates.features.visible = true;
+
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            featureCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                    animationStates.features.cardsAnimated.push(index);
+                }, index * 150);
+            });
+
+            // Add enhanced hover effects
+            addFeatureInteractions();
+        }
+
+        // Enhanced feature interactions
+        function addFeatureInteractions() {
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            featureCards.forEach(card => {
+                const preview = card.querySelector('.feature-preview');
+                const mockupElements = preview.querySelectorAll('.mini-deal-card, .deal-row, .task-item');
+
+                card.addEventListener('mouseenter', () => {
+                    // Stagger animation of mockup elements
+                    mockupElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.style.transform = 'translateY(-2px)';
+                            element.style.boxShadow = 'var(--shadow-md)';
+                        }, index * 50);
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Reset mockup elements
+                    mockupElements.forEach(element => {
+                        element.style.transform = '';
+                        element.style.boxShadow = '';
+                    });
+                });
+            });
+
+            // Special animations for specific features
+            animatePipelineFeature();
+            animateTasksFeature();
+        }
+
+        // Pipeline feature specific animation
+        function animatePipelineFeature() {
+            const pipelineCard = document.querySelector('[data-feature="pipeline"]');
+            if (!pipelineCard) return;
+
+            const dealCards = pipelineCard.querySelectorAll('.mini-deal-card');
+
+            setInterval(() => {
+                if (pipelineCard.matches(':hover')) {
+                    dealCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.transform = 'translateX(5px)';
+                            setTimeout(() => {
+                                card.style.transform = '';
+                            }, 200);
+                        }, index * 100);
+                    });
+                }
+            }, 3000);
+        }
+
+        // Tasks feature specific animation
+        function animateTasksFeature() {
+            const tasksCard = document.querySelector('[data-feature="tasks"]');
+            if (!tasksCard) return;
+
+            const taskItems = tasksCard.querySelectorAll('.task-item');
+
+            setInterval(() => {
+                if (tasksCard.matches(':hover')) {
+                    // Simulate completing a task
+                    const incompleteTasks = Array.from(taskItems).filter(task => !task.classList.contains('completed'));
+                    if (incompleteTasks.length > 0) {
+                        const randomTask = incompleteTasks[Math.floor(Math.random() * incompleteTasks.length)];
+                        const checkmark = randomTask.querySelector('.task-check');
+
+                        checkmark.textContent = '✓';
+                        randomTask.classList.add('completed');
+
+                        setTimeout(() => {
+                            checkmark.textContent = '○';
+                            randomTask.classList.remove('completed');
+                        }, 2000);
+                    }
+                }
+            }, 4000);
+        }
+
+        // Animate pricing section
+        function animatePricingSection() {
+            if (animationStates.pricing.visible) return;
+            animationStates.pricing.visible = true;
+
+            const pricingCards = document.querySelectorAll('.pricing-card');
+
+            pricingCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 200);
+            });
+
+            // Add pricing card interactions
+            addPricingInteractions();
+        }
+
+        // Enhanced pricing interactions
+        function addPricingInteractions() {
+            const pricingCards = document.querySelectorAll('.pricing-card');
+
+            pricingCards.forEach(card => {
+                const features = card.querySelectorAll('.feature-item');
+
+                card.addEventListener('mouseenter', () => {
+                    // Highlight included features
+                    features.forEach((feature, index) => {
+                        if (feature.classList.contains('included')) {
+                            setTimeout(() => {
+                                feature.style.backgroundColor = '#f0fdf4';
+                                feature.style.transform = 'translateX(5px)';
+                            }, index * 50);
+                        }
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Reset features
+                    features.forEach(feature => {
+                        feature.style.backgroundColor = '';
+                        feature.style.transform = '';
+                    });
+                });
+            });
+
+            // Add pulse animation to CTA buttons
+            const ctaButtons = document.querySelectorAll('.pricing-card .btn');
+            ctaButtons.forEach(button => {
+                setInterval(() => {
+                    if (!button.matches(':hover')) {
+                        button.style.transform = 'scale(1.02)';
+                        setTimeout(() => {
+                            button.style.transform = '';
+                        }, 200);
+                    }
+                }, 5000);
+            });
+        }
+    </script>
+</body>
+
+</html>
